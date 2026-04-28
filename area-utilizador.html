@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Portal Emergência — Área do Utilizador</title>
+<link href="styles.css" rel="stylesheet"/>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MZMGPZXF4C"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-MZMGPZXF4C');
+</script>
+<!-- End Google Analytics -->
+<!-- Start cookieyes banner -->
+<script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/b8af77cabeb1404bd8aca5b2/script.js"></script>
+<!-- End cookieyes banner -->
+</head>
+<body>
+<header class="site-header">
+<nav class="navbar">
+<a class="logo" href="index.html"><img alt="Portal Emergência" class="site-logo-img" src="https://d1yei2z3i6k35z.cloudfront.net/16629453/69a435d052ad6_2.png"/></a>
+<div class="menu">
+<a href="index.html">Página Inicial</a>
+<a href="sobre.html">Sobre</a>
+<div class="dropdown">
+<button class="drop-btn" type="button">Loja⌄</button>
+<div class="drop-panel">
+<a href="loja.html">Todos os produtos</a>
+<a href="kits.html">Kits de Emergência</a>
+<a href="produtos-individuais.html">Produtos Individuais</a>
+</div>
+</div>
+<a href="emergencias.html">Emergências</a>
+<a href="parcerias.html">Parcerias</a>
+<a href="contacto.html">Contacto</a>
+<a aria-label="Carrinho" class="header-cart-icon" href="carrinho.html">🛒<span class="cart-count">0</span></a>
+<a class="nav-auth-link nav-user-link active" href="area-utilizador.html">Área do Utilizador</a>
+<a class="login-btn nav-login-link" href="login.html">⌘ Login</a>
+</div>
+</nav>
+</header>
+<main class="app-page">
+<div class="page-title"><h1>Área do<br/>Utilizador</h1></div>
+<section class="app-card" id="user-guest" style="display:none;">
+<h2 style="color:#1a2744;margin-bottom:12px;">Acesso reservado</h2>
+<p>Inicia sessão para veres os teus dados e histórico de encomendas.</p>
+<br/>
+<a class="btn-navy" href="login.html">Login / Registo</a>
+</section>
+<section class="user-dashboard" id="user-dashboard" style="display:none;">
+<aside class="user-profile-card">
+<div class="user-profile-avatar" id="profile-initial">U</div>
+<h2 id="profile-name">Utilizador</h2>
+<p><strong>Email:</strong><br/><span id="profile-email"></span></p>
+<p><strong>ID de cliente:</strong><br/><span id="profile-id"></span></p>
+<div style="margin-top:22px;display:grid;gap:10px;">
+<a class="btn-red" href="carrinho.html">Ver carrinho</a>
+<a class="btn-red" href="loja.html">Continuar compras</a>
+<button class="btn-red" id="logout-btn" style="border:0;" type="button">Terminar sessão</button>
+</div>
+</aside>
+<div>
+<div class="user-stats-grid">
+<div class="user-stat"><strong id="stat-orders">0</strong><span>Encomendas</span></div>
+<div class="user-stat"><strong id="stat-total">0,00€</strong><span>Total registado</span></div>
+</div>
+<div class="app-card">
+<h2 style="color:#1a2744;margin-bottom:18px;">Histórico de encomendas</h2>
+<p id="orders-status" style="font-size:13px;color:#666;margin-bottom:12px;">A carregar encomendas...</p>
+<section class="orders-list" id="orders-list"></section>
+</div>
+</div>
+</section>
+</main>
+<footer class="pe-footer">
+<div class="pe-footer-inner">
+<div class="pe-footer-grid">
+<div class="pe-footer-col">
+<h3>Portal Emergência</h3>
+<p>Rua do ISCAC nº 25</p>
+<p>Coimbra, Portugal</p>
+<p>Tel: +351 912 345 678</p>
+<p>portalemergenciacompany@gmail.com</p>
+</div>
+<div class="pe-footer-col">
+<h3>Descobrir</h3>
+<a href="index.html">Página Inicial</a>
+<a href="sobre.html">Sobre</a>
+<a href="loja.html">Loja</a>
+<a href="contacto.html">Contacto</a>
+</div>
+<div class="pe-footer-col">
+<h3>Ajuda</h3>
+<a href="envio-devolucao.html">Envio e devolução</a>
+<a href="politica-loja.html">Política da loja</a>
+<a href="metodos-pagamento.html">Métodos de pagamento</a>
+</div>
+<div class="pe-footer-col">
+<h3>Redes Sociais</h3>
+<a href="https://www.facebook.com/people/Portal-Emerg%C3%AAncia/pfbid0fcYAXChSHy3FwENU5ViHKPkRZhBSwasmqSXKz6sXkmwog1BZxp2RAzqXRxFmqQpnl/" target="_blank">Facebook</a>
+<a href="https://www.instagram.com/portalemergencia" target="_blank">Instagram</a>
+</div>
+</div>
+<hr class="pe-footer-divider"/>
+<div class="pe-footer-copy">
+<p>© 2026 Portal Emergência. Todos os direitos reservados.</p>
+<p>Portal Emergência, Lda. – NIF: 123 456 789</p>
+<p>Rua do ISCAC nº 25, Coimbra, Portugal</p>
+<p>Email: portalemergenciacompany@gmail.com · Tel: +351 912 345 678</p>
+</div>
+</div>
+<p aria-hidden="true" style="color: transparent; font-size: 1px; line-height: 0; margin: 0; padding: 0; overflow: hidden;">
+    portal emergência kits de emergência comprar kit sobrevivência preparação emergência portugal loja kits emergência online kit primeiros socorros kit catástrofe kit autossuficiência preparação desastres naturais segurança civil emergência portugal kit sobrevivência familiar kit emergência casa kit apagão kit inundação preparação preventiva equipamentos emergência
+  </p>
+</footer>
+<script src="config.js"></script>
+<script>
+(function() {
+  function money(value) {
+    return Number(value || 0).toLocaleString("pt-PT", { style: "currency", currency: "EUR" });
+  }
+
+  function getUser() {
+    try {
+      return JSON.parse(localStorage.getItem("pe_user"));
+    } catch(e) {
+      return null;
+    }
+  }
+
+  function updateCartCount() {
+    var count = 0;
+    try {
+      var cart = JSON.parse(localStorage.getItem("pe_cart")) || [];
+      count = cart.reduce(function(sum, item) {
+        return sum + Number(item.quantidade || 0);
+      }, 0);
+    } catch(e) {}
+
+    document.querySelectorAll(".cart-count").forEach(function(el) {
+      el.textContent = count;
+    });
+  }
+
+  function jsonp(action, payload, timeoutMs) {
+    timeoutMs = timeoutMs || 7000;
+
+    return new Promise(function(resolve, reject) {
+      var callback = "pe_area_cb_" + Date.now() + "_" + Math.floor(Math.random() * 100000);
+      var script = document.createElement("script");
+
+      var timer = setTimeout(function() {
+        cleanup();
+        reject(new Error("A API não respondeu."));
+      }, timeoutMs);
+
+      function cleanup() {
+        clearTimeout(timer);
+        if (script.parentNode) script.parentNode.removeChild(script);
+        try {
+          delete window[callback];
+        } catch(e) {
+          window[callback] = undefined;
+        }
+      }
+
+      window[callback] = function(data) {
+        cleanup();
+        if (!data || !data.ok) {
+          reject(new Error((data && data.error) || "Erro na API."));
+        } else {
+          resolve(data);
+        }
+      };
+
+      script.onerror = function() {
+        cleanup();
+        reject(new Error("Não foi possível carregar a API."));
+      };
+
+      var params = new URLSearchParams();
+      params.set("action", action);
+      params.set("callback", callback);
+      params.set("payload", JSON.stringify(payload || {}));
+      params.set("_t", Date.now());
+
+      script.src = window.PE_API_URL + "?" + params.toString();
+      document.body.appendChild(script);
+    });
+  }
+
+  function logout() {
+    localStorage.removeItem("pe_user");
+    location.href = "login.html";
+  }
+
+  function renderOrders(orders) {
+    var list = document.getElementById("orders-list");
+    var status = document.getElementById("orders-status");
+
+    document.getElementById("stat-orders").textContent = orders.length;
+    document.getElementById("stat-total").textContent = money(orders.reduce(function(sum, order) {
+      return sum + Number(order.total || 0);
+    }, 0));
+
+    status.textContent = "Última atualização: " + new Date().toLocaleTimeString("pt-PT");
+
+    if (!orders.length) {
+      list.innerHTML = "<p>Ainda não tens encomendas.</p>";
+      return;
+    }
+
+    list.innerHTML = orders.map(function(order) {
+      var items = order.items || [];
+      var itemsHtml = "";
+
+      if (items.length) {
+        itemsHtml = "<ul>" + items.map(function(i) {
+          return "<li>" + Number(i.quantidade || 0) + "x " + (i.nomeProduto || "Produto") + " — " + money(i.subtotal) + "</li>";
+        }).join("") + "</ul>";
+      }
+
+      return '<article class="order-card">' +
+        '<h3>Encomenda ' + (order.id || "") + '</h3>' +
+        '<p><strong>Data:</strong> ' + (order.data || "") + '</p>' +
+        '<p><strong>Total:</strong> ' + money(order.total) + '</p>' +
+        itemsHtml +
+      '</article>';
+    }).join("");
+  }
+
+  async function loadOrders() {
+    var user = getUser();
+    var status = document.getElementById("orders-status");
+    var list = document.getElementById("orders-list");
+
+    status.textContent = "A carregar encomendas...";
+    list.innerHTML = "";
+
+    try {
+      var data = await jsonp("myOrders", { token: user.token }, 9000);
+      renderOrders(data.orders || []);
+    } catch(err) {
+      status.textContent = "Erro ao carregar encomendas.";
+      list.innerHTML = '<div class="app-message err" style="display:block">' + err.message + '</div>';
+    }
+  }
+
+  function initArea() {
+    updateCartCount();
+
+    var user = getUser();
+    document.body.classList.toggle("pe-logged-in", !!(user && user.token));
+
+    var guest = document.getElementById("user-guest");
+    var dashboard = document.getElementById("user-dashboard");
+
+    document.getElementById("logout-btn").addEventListener("click", logout);
+
+    if (!user || !user.token) {
+      guest.style.display = "block";
+      dashboard.style.display = "none";
+      return;
+    }
+
+    guest.style.display = "none";
+    dashboard.style.display = "grid";
+
+    document.getElementById("profile-name").textContent = user.nome || "Utilizador";
+    document.getElementById("profile-email").textContent = user.email || "";
+    document.getElementById("profile-id").textContent = user.id || "";
+    document.getElementById("profile-initial").textContent = (user.nome || "U").charAt(0).toUpperCase();
+
+    loadOrders();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initArea);
+  } else {
+    initArea();
+  }
+})();
+</script>
+</body>
+</html>
