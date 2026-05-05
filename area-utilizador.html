@@ -39,10 +39,6 @@
 <p>Inicia sessão para veres os teus dados e histórico de encomendas.</p>
 <br/>
 <a class="btn-navy" href="login.html">Login / Registo</a>
-<details style="margin-top:16px;font-size:12px;color:#666;">
-  <summary style="cursor:pointer;">Diagnóstico (clica para ver)</summary>
-  <pre id="diag-output" style="background:#f4f5f8;padding:10px;border-radius:6px;margin-top:8px;overflow:auto;white-space:pre-wrap;"></pre>
-</details>
 </section>
 <section class="user-dashboard" id="user-dashboard" style="display:none;">
 <aside class="user-profile-card">
@@ -172,18 +168,10 @@
 
   function getUser() {
     try {
-      var raw = localStorage.getItem("pe_user");
-      if (!raw) return null;
-      var u = JSON.parse(raw);
-      return u;
+      return JSON.parse(localStorage.getItem("pe_user"));
     } catch(e) {
       return null;
     }
-  }
-
-  function isLoggedIn(user) {
-    // Aceita user com token OU com id+email (alguns backends não retornam token)
-    return !!(user && (user.token || (user.id && user.email)));
   }
 
   function updateCartCount() {
@@ -194,39 +182,54 @@
         return sum + Number(item.quantidade || 0);
       }, 0);
     } catch(e) {}
+
     document.querySelectorAll(".cart-count").forEach(function(el) {
       el.textContent = count;
     });
   }
 
   function jsonp(action, payload, timeoutMs) {
-    timeoutMs = timeoutMs || 9000;
+    timeoutMs = timeoutMs || 7000;
+
     return new Promise(function(resolve, reject) {
       var callback = "pe_area_cb_" + Date.now() + "_" + Math.floor(Math.random() * 100000);
       var script = document.createElement("script");
+
       var timer = setTimeout(function() {
         cleanup();
         reject(new Error("A API não respondeu."));
       }, timeoutMs);
+
       function cleanup() {
         clearTimeout(timer);
         if (script.parentNode) script.parentNode.removeChild(script);
-        try { delete window[callback]; } catch(e) { window[callback] = undefined; }
+        try {
+          delete window[callback];
+        } catch(e) {
+          window[callback] = undefined;
+        }
       }
+
       window[callback] = function(data) {
         cleanup();
-        if (!data || !data.ok) reject(new Error((data && data.error) || "Erro na API."));
-        else resolve(data);
+        if (!data || !data.ok) {
+          reject(new Error((data && data.error) || "Erro na API."));
+        } else {
+          resolve(data);
+        }
       };
+
       script.onerror = function() {
         cleanup();
         reject(new Error("Não foi possível carregar a API."));
       };
+
       var params = new URLSearchParams();
       params.set("action", action);
       params.set("callback", callback);
       params.set("payload", JSON.stringify(payload || {}));
       params.set("_t", Date.now());
+
       script.src = window.PE_API_URL + "?" + params.toString();
       document.body.appendChild(script);
     });
@@ -255,11 +258,14 @@
 
     list.innerHTML = orders.map(function(order) {
       var items = order.items || [];
-      var itemsHtml = items.length
-        ? "<ul>" + items.map(function(i) {
-            return "<li>" + Number(i.quantidade || 0) + "x " + (i.nomeProduto || "Produto") + " — " + money(i.subtotal) + "</li>";
-          }).join("") + "</ul>"
-        : "";
+      var itemsHtml = "";
+
+      if (items.length) {
+        itemsHtml = "<ul>" + items.map(function(i) {
+          return "<li>" + Number(i.quantidade || 0) + "x " + (i.nomeProduto || "Produto") + " — " + money(i.subtotal) + "</li>";
+        }).join("") + "</ul>";
+      }
+
       return '<article class="order-card">' +
         '<h3>Encomenda ' + (order.id || "") + '</h3>' +
         '<p><strong>Data:</strong> ' + (order.data || "") + '</p>' +
@@ -269,16 +275,14 @@
     }).join("");
   }
 
-  async function loadOrders(user) {
+  async function loadOrders() {
+    var user = getUser();
     var status = document.getElementById("orders-status");
     var list = document.getElementById("orders-list");
-    if (!user.token) {
-      status.textContent = "";
-      list.innerHTML = "<p>Histórico disponível após próximo login.</p>";
-      return;
-    }
+
     status.textContent = "A carregar encomendas...";
     list.innerHTML = "";
+
     try {
       var data = await jsonp("myOrders", { token: user.token }, 9000);
       renderOrders(data.orders || []);
@@ -292,39 +296,28 @@
     updateCartCount();
 
     var user = getUser();
-    var loggedIn = isLoggedIn(user);
-
-    document.body.classList.toggle("pe-logged-in", loggedIn);
+    document.body.classList.toggle("pe-logged-in", !!(user && user.token));
 
     var guest = document.getElementById("user-guest");
     var dashboard = document.getElementById("user-dashboard");
-    var logoutBtn = document.getElementById("logout-btn");
 
-    if (logoutBtn) logoutBtn.addEventListener("click", logout);
+    document.getElementById("logout-btn").addEventListener("click", logout);
 
-    if (!loggedIn) {
+    if (!user || !user.token) {
       guest.style.display = "block";
       dashboard.style.display = "none";
-      // Diagnóstico
-      var diag = document.getElementById("diag-output");
-      if (diag) {
-        var raw = localStorage.getItem("pe_user");
-        diag.textContent = raw
-          ? "pe_user encontrado:\n" + JSON.stringify(JSON.parse(raw), null, 2)
-          : "pe_user: (vazio — não foi guardado após login)";
-      }
       return;
     }
 
     guest.style.display = "none";
     dashboard.style.display = "grid";
 
-    document.getElementById("profile-name").textContent = user.nome || user.name || "Utilizador";
+    document.getElementById("profile-name").textContent = user.nome || "Utilizador";
     document.getElementById("profile-email").textContent = user.email || "";
-    document.getElementById("profile-id").textContent = user.id || user.userId || "";
-    document.getElementById("profile-initial").textContent = ((user.nome || user.name || "U").charAt(0)).toUpperCase();
+    document.getElementById("profile-id").textContent = user.id || "";
+    document.getElementById("profile-initial").textContent = (user.nome || "U").charAt(0).toUpperCase();
 
-    loadOrders(user);
+    loadOrders();
   }
 
   if (document.readyState === "loading") {
