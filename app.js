@@ -399,7 +399,9 @@ const PE = {
     if (!guest || !dashboard) return;
 
     const user = this.getUser();
-    if (!this.isLoggedIn(user)) {
+    console.log("🔍 renderUserArea - pe_user raw:", localStorage.getItem("pe_user"));
+    console.log("🔍 renderUserArea - user:", JSON.stringify(user));
+    console.log("🔍 renderUserArea - isLoggedIn:", this.isLoggedIn(user));
       guest.style.display = "block";
       dashboard.style.display = "none";
       return;
