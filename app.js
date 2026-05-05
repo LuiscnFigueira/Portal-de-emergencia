@@ -1,4 +1,3 @@
-
 function cleanupDuplicateProductUi() {
   document.querySelectorAll("a.pe-product-link").forEach(function(card) {
     var stocks = card.querySelectorAll(".pe-product-stock");
@@ -64,10 +63,15 @@ const PE = {
     document.querySelectorAll(".cart-count").forEach(el => el.textContent = count);
   },
 
+  isLoggedIn(user) {
+    const u = user !== undefined ? user : this.getUser();
+    return !!(u && (u.token || (u.id && u.email)));
+  },
+
   updateAuthUI() {
     const user = this.getUser();
-    document.body.classList.toggle("pe-logged-in", !!(user && user.token));
-    document.querySelectorAll("[data-user-name]").forEach(el => el.textContent = user ? user.nome : "");
+    document.body.classList.toggle("pe-logged-in", this.isLoggedIn(user));
+    document.querySelectorAll("[data-user-name]").forEach(el => el.textContent = user ? (user.nome || user.name || "") : "");
   },
 
   jsonp(action, payload = {}, timeoutMs = 7000) {
@@ -189,7 +193,7 @@ const PE = {
 
     const user = this.getUser();
 
-    if (!user || !user.token) {
+    if (!this.isLoggedIn(user)) {
       form.style.display = "none";
       const msg = document.getElementById("checkout-login-warning");
       if (msg) msg.style.display = "block";
@@ -395,7 +399,7 @@ const PE = {
     if (!guest || !dashboard) return;
 
     const user = this.getUser();
-    if (!user || !user.token) {
+    if (!this.isLoggedIn(user)) {
       guest.style.display = "block";
       dashboard.style.display = "none";
       return;
@@ -404,10 +408,28 @@ const PE = {
     guest.style.display = "none";
     dashboard.style.display = "grid";
 
-    document.querySelectorAll("[data-profile-name]").forEach(el => el.textContent = user.nome);
-    document.querySelectorAll("[data-profile-email]").forEach(el => el.textContent = user.email);
-    document.querySelectorAll("[data-profile-id]").forEach(el => el.textContent = user.id);
-    document.querySelectorAll("[data-profile-initial]").forEach(el => el.textContent = (user.nome || "U").charAt(0).toUpperCase());
+    const nome = user.nome || user.name || "Utilizador";
+    const email = user.email || "";
+    const id = user.id || user.userId || "";
+
+    document.querySelectorAll("[data-profile-name]").forEach(el => el.textContent = nome);
+    document.querySelectorAll("[data-profile-email]").forEach(el => el.textContent = email);
+    document.querySelectorAll("[data-profile-id]").forEach(el => el.textContent = id);
+    document.querySelectorAll("[data-profile-initial]").forEach(el => el.textContent = nome.charAt(0).toUpperCase());
+
+    // Preenche também IDs diretos (usados na area-utilizador.html)
+    const el = (id) => document.getElementById(id);
+    if (el("profile-name")) el("profile-name").textContent = nome;
+    if (el("profile-email")) el("profile-email").textContent = email;
+    if (el("profile-id")) el("profile-id").textContent = id;
+    if (el("profile-initial")) el("profile-initial").textContent = nome.charAt(0).toUpperCase();
+
+    if (!user.token) {
+      if (list) list.innerHTML = "<p>Ainda não tens encomendas registadas.</p>";
+      const status = document.getElementById("orders-status");
+      if (status) status.textContent = "";
+      return;
+    }
 
     try {
       const data = await this.jsonp("myOrders", { token: user.token }, 15000);
@@ -419,6 +441,9 @@ const PE = {
       if (statOrders) statOrders.textContent = orders.length;
       if (statTotal) statTotal.textContent = this.money(orders.reduce((s,o)=>s+Number(o.total||0),0));
       if (statPending) statPending.textContent = orders.filter(o => String(o.estado).toLowerCase()==="pendente").length;
+
+      const status = document.getElementById("orders-status");
+      if (status) status.textContent = "Última atualização: " + new Date().toLocaleTimeString("pt-PT");
 
       if (!list) return;
       if (!orders.length) {
