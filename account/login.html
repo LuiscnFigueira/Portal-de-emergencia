@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Portal Emergência — Login e Registo</title>
+<meta content="Login e registo de utilizador do Portal Emergência." name="description"/>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WJN3D9SK');</script>
+<!-- End Google Tag Manager -->
+<link href="../assets/css/styles.css" rel="stylesheet"/>
+<script data-cbid="023ba098-1eac-430a-b7e4-ac4aae060313" id="Cookiebot" src="https://consent.cookiebot.com/uc.js" type="text/javascript"></script>
+<script src="../assets/js/config.js"></script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-WJN3D9SK" style="display:none;visibility:hidden" width="0"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<header class="site-header">
+<nav class="navbar">
+<a class="logo" href="../index.html"><img alt="Portal Emergência" class="site-logo-img" src="https://d1yei2z3i6k35z.cloudfront.net/16629453/69a435d052ad6_2.png"/></a>
+<div class="menu">
+<a href="../index.html">Página Inicial</a>
+<a href="../pages/sobre.html">Sobre</a>
+<div class="dropdown">
+<button aria-expanded="false" aria-haspopup="true" class="drop-btn" type="button">Loja⌄</button>
+<div class="drop-panel">
+<a href="../shop/loja.html">Todos os produtos</a>
+<a href="../shop/kits.html">Kits de Emergência</a>
+<a href="../shop/produtos-individuais.html">Produtos Individuais</a>
+</div>
+</div>
+<a href="../pages/emergencias.html">Emergências</a>
+<a href="../pages/parcerias.html">Parcerias</a>
+<a href="../pages/contacto.html">Contacto</a>
+<a aria-label="Carrinho" class="header-cart-icon" href="../shop/carrinho.html">🛒<span class="cart-count">0</span></a>
+<a class="nav-auth-link nav-user-link" href="area-utilizador.html">Área do Utilizador</a>
+<a class="login-btn nav-login-link active" href="login.html">⌘ Login</a>
+</div>
+</nav>
+<div class="mobile-note">Menu: Página Inicial · Sobre · Loja · Emergências · Parcerias · Contacto · Login</div>
+</header>
+
+<main class="login-page-clean">
+<div class="page-title"><h1>Login e<br/>Registo</h1></div>
+<section class="login-panel-grid">
+<article class="login-clean-card">
+<h2>Entrar</h2>
+<form id="form-login">
+<input id="login-email" name="email" placeholder="Email" required="" type="email"/>
+<input id="login-password" name="password" placeholder="Palavra-passe" required="" type="password"/>
+<button class="btn-navy" id="btn-login" type="submit">Entrar</button>
+</form>
+</article>
+<article class="login-clean-card">
+<h2>Criar Conta</h2>
+<form id="form-register">
+<input id="reg-name" name="nome" placeholder="Nome completo" required=""/>
+<input id="reg-email" name="email" placeholder="Email" required="" type="email"/>
+<input id="reg-password" minlength="6" name="password" placeholder="Palavra-passe" required="" type="password"/>
+<button class="btn-red" id="btn-register" type="submit">Criar Conta</button>
+</form>
+</article>
+</section>
+<div class="app-message" id="auth-message" style="max-width:980px;margin:20px auto 0;display:none;"></div>
+<section class="login-clean-card" id="logged-box" style="max-width:980px;margin:24px auto 0;display:none;">
+<h2>Já tens sessão iniciada</h2>
+<p>Estás autenticado.</p>
+<br/>
+<a class="btn-navy" href="area-utilizador.html">Ir para a Área do Utilizador</a>
+<button class="btn-red" id="btn-logout" style="border:0;margin-left:8px;" type="button">Terminar sessão</button>
+</section>
+</main>
+
+<footer class="pe-footer">
+<div class="pe-footer-inner">
+<div class="pe-footer-grid">
+<div class="pe-footer-col">
+<h3>Portal Emergência</h3>
+<p>Rua do ISCAC nº 25</p>
+<p>Coimbra, Portugal</p>
+<p>Tel: +351 912 345 678</p>
+<p>portalemergenciacompany@gmail.com</p>
+</div>
+<div class="pe-footer-col">
+<h3>Descobrir</h3>
+<a href="../index.html">Página Inicial</a>
+<a href="../pages/sobre.html">Sobre</a>
+<a href="../shop/loja.html">Loja</a>
+<a href="../pages/contacto.html">Contacto</a>
+</div>
+<div class="pe-footer-col">
+<h3>Ajuda</h3>
+<a href="../pages/envio-devolucao.html">Envio e devolução</a>
+<a href="../pages/politica-loja.html">Política da loja</a>
+<a href="../pages/metodos-pagamento.html">Métodos de pagamento</a>
+</div>
+<div class="pe-footer-col">
+<h3>Redes Sociais</h3>
+<a href="https://www.facebook.com/people/Portal-Emerg%C3%AAncia/pfbid0fcYAXChSHy3FwENU5ViHKPkRZhBSwasmqSXKz6sXkmwog1BZxp2RAzqXRxFmqQpnl/" target="_blank">Facebook</a>
+<a href="https://www.instagram.com/portalemergencia" target="_blank">Instagram</a>
+</div>
+</div>
+<hr class="pe-footer-divider"/>
+<div class="pe-footer-copy">
+<p>© 2026 Portal Emergência. Todos os direitos reservados.</p>
+<p>Portal Emergência, Lda. – NIF: 123 456 789</p>
+<p>Rua do ISCAC nº 25, Coimbra, Portugal</p>
+<p>Email: portalemergenciacompany@gmail.com · Tel: +351 912 345 678</p>
+</div>
+</div>
+<p aria-hidden="true" style="color: transparent; font-size: 1px; line-height: 0; margin: 0; padding: 0; overflow: hidden;">
+    portal emergência kits de emergência comprar kit sobrevivência preparação emergência portugal loja kits emergência online kit primeiros socorros kit catástrofe kit autossuficiência preparação desastres naturais segurança civil emergência portugal kit sobrevivência familiar kit emergência casa kit apagão kit inundação preparação preventiva equipamentos emergência
+  </p>
+</footer>
+
+<script>
+(function() {
+  var API_URL = window.PE_API_URL || "https://script.google.com/macros/s/AKfycbxIjwJvOm8dgDhebab9Z7YziJslALUW7wwhMu2Sj5RKBu-AKEZC_bcTcMfv8rilyxxB/exec";
+
+  function showMsg(type, text) {
+    var el = document.getElementById("auth-message");
+    if (!el) return;
+    el.className = "app-message " + type;
+    el.style.display = "block";
+    el.textContent = text;
+  }
+
+  function setLoading(btn, loading) {
+    if (!btn) return;
+    if (loading) { btn._orig = btn.textContent; btn.textContent = "A processar…"; btn.disabled = true; }
+    else         { btn.textContent = btn._orig || "Submeter"; btn.disabled = false; }
+  }
+
+  function isLoggedIn(user) {
+    return !!(user && (user.token || (user.id && user.email)));
+  }
+
+  function getUser() {
+    try { return JSON.parse(localStorage.getItem("pe_user")); } catch(e) { return null; }
+  }
+
+  function callApi(action, payload) {
+    return new Promise(function(resolve, reject) {
+      var cb = "pe_login_cb_" + Date.now() + "_" + Math.floor(Math.random() * 99999);
+      var script = document.createElement("script");
+      var timer = setTimeout(function() {
+        cleanup();
+        reject(new Error("A API não respondeu. Tenta novamente."));
+      }, 15000);
+      function cleanup() {
+        clearTimeout(timer);
+        if (script.parentNode) script.parentNode.removeChild(script);
+        try { delete window[cb]; } catch(e) {}
+      }
+      window[cb] = function(data) {
+        cleanup();
+        if (!data || !data.ok) reject(new Error((data && data.error) || "Erro desconhecido."));
+        else resolve(data);
+      };
+      script.onerror = function() { cleanup(); reject(new Error("Erro de ligação ao servidor.")); };
+      var p = new URLSearchParams();
+      p.set("action", action);
+      p.set("callback", cb);
+      p.set("payload", JSON.stringify(payload || {}));
+      p.set("_t", Date.now());
+      script.src = API_URL + "?" + p.toString();
+      document.body.appendChild(script);
+    });
+  }
+
+  function updateState() {
+    var user = getUser();
+    var loggedIn = isLoggedIn(user);
+    var loggedBox = document.getElementById("logged-box");
+    if (loggedBox) loggedBox.style.display = loggedIn ? "block" : "none";
+    // Atualizar navbar
+    document.body.classList.toggle("pe-logged-in", loggedIn);
+  }
+
+  document.addEventListener("DOMContentLoaded", function() {
+    // Atualizar cart count
+    try {
+      var cart = JSON.parse(localStorage.getItem("pe_cart")) || [];
+      var count = cart.reduce(function(s,i){ return s + Number(i.quantidade||0); }, 0);
+      document.querySelectorAll(".cart-count").forEach(function(el){ el.textContent = count; });
+    } catch(e) {}
+
+    updateState();
+
+    // Dropdown nav
+    document.querySelectorAll('.dropdown .drop-btn').forEach(function(btn) {
+      btn.setAttribute('aria-expanded', 'false');
+      btn.addEventListener('click', function(e) {
+        e.preventDefault(); e.stopPropagation();
+        var parent = btn.closest('.dropdown');
+        var willOpen = !parent.classList.contains('open');
+        document.querySelectorAll('.dropdown.open').forEach(function(d) {
+          if (d !== parent) { d.classList.remove('open'); var b = d.querySelector('.drop-btn'); if (b) b.setAttribute('aria-expanded','false'); }
+        });
+        parent.classList.toggle('open', willOpen);
+        btn.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+      });
+    });
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.dropdown')) {
+        document.querySelectorAll('.dropdown.open').forEach(function(d) {
+          d.classList.remove('open');
+          var b = d.querySelector('.drop-btn'); if (b) b.setAttribute('aria-expanded','false');
+        });
+      }
+    });
+
+    // Form login
+    var formLogin = document.getElementById("form-login");
+    if (formLogin) {
+      formLogin.addEventListener("submit", async function(e) {
+        e.preventDefault();
+        var btn   = document.getElementById("btn-login");
+        var email = document.getElementById("login-email").value.trim();
+        var pass  = document.getElementById("login-password").value;
+        if (!email || !pass) { showMsg("err", "Preenche todos os campos."); return; }
+        setLoading(btn, true);
+        try {
+          var data = await callApi("login", { email: email, password: pass });
+          var user = data.user || data;
+          if (data.token) user.token = data.token;
+          localStorage.setItem("pe_user", JSON.stringify(user));
+          showMsg("ok", "Login efetuado! A redirecionar…");
+          setTimeout(function() { window.location.href = "area-utilizador.html"; }, 600);
+        } catch(err) {
+          setLoading(btn, false);
+          showMsg("err", err.message);
+        }
+      });
+    }
+
+    // Form registo
+    var formReg = document.getElementById("form-register");
+    if (formReg) {
+      formReg.addEventListener("submit", async function(e) {
+        e.preventDefault();
+        var btn   = document.getElementById("btn-register");
+        var nome  = document.getElementById("reg-name").value.trim();
+        var email = document.getElementById("reg-email").value.trim();
+        var pass  = document.getElementById("reg-password").value;
+        if (!nome || !email || !pass) { showMsg("err", "Preenche todos os campos."); return; }
+        setLoading(btn, true);
+        try {
+          var data = await callApi("register", { nome: nome, email: email, password: pass });
+          var user = data.user || data;
+          if (data.token) user.token = data.token;
+          localStorage.setItem("pe_user", JSON.stringify(user));
+          showMsg("ok", "Conta criada! A redirecionar…");
+          setTimeout(function() { window.location.href = "area-utilizador.html"; }, 600);
+        } catch(err) {
+          setLoading(btn, false);
+          showMsg("err", err.message);
+        }
+      });
+    }
+
+    // Botão logout
+    var btnLogout = document.getElementById("btn-logout");
+    if (btnLogout) {
+      btnLogout.addEventListener("click", function() {
+        localStorage.removeItem("pe_user");
+        updateState();
+        showMsg("ok", "Sessão terminada.");
+      });
+    }
+  });
+})();
+</script>
+<script src="../assets/js/app.js"></script>
+</body>
+</html>
